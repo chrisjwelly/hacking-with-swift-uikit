@@ -37,6 +37,8 @@
 		3EEF58B825773898008D5A46 /* us@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EEF58A025773897008D5A46 /* us@3x.png */; };
 		3EEF58B925773898008D5A46 /* estonia@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EEF58A125773897008D5A46 /* estonia@2x.png */; };
 		3EEF58BA25773898008D5A46 /* estonia@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EEF58A225773897008D5A46 /* estonia@3x.png */; };
+		3EEF58BD25773BA1008D5A46 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF58BC25773BA1008D5A46 /* Flag.swift */; };
+		3EEF58C425774025008D5A46 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF58C325774025008D5A46 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		3EEF58A025773897008D5A46 /* us@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "us@3x.png"; path = "../../../HackingWithSwift/Classic/project2-files/us@3x.png"; sourceTree = "<group>"; };
 		3EEF58A125773897008D5A46 /* estonia@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "estonia@2x.png"; path = "../../../HackingWithSwift/Classic/project2-files/estonia@2x.png"; sourceTree = "<group>"; };
 		3EEF58A225773897008D5A46 /* estonia@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "estonia@3x.png"; path = "../../../HackingWithSwift/Classic/project2-files/estonia@3x.png"; sourceTree = "<group>"; };
+		3EEF58BC25773BA1008D5A46 /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
+		3EEF58C325774025008D5A46 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +112,9 @@
 				3EEF57CD25773331008D5A46 /* AppDelegate.swift */,
 				3EEF57CF25773331008D5A46 /* SceneDelegate.swift */,
 				3EEF57D125773331008D5A46 /* ViewController.swift */,
+				3EEF58BC25773BA1008D5A46 /* Flag.swift */,
 				3EEF57D325773331008D5A46 /* Main.storyboard */,
+				3EEF58C325774025008D5A46 /* DetailViewController.swift */,
 				3EEF57D625773333008D5A46 /* Assets.xcassets */,
 				3EEF57D825773333008D5A46 /* LaunchScreen.storyboard */,
 				3EEF57DB25773333008D5A46 /* Info.plist */,
@@ -243,7 +249,9 @@
 			files = (
 				3EEF57D225773331008D5A46 /* ViewController.swift in Sources */,
 				3EEF57CE25773331008D5A46 /* AppDelegate.swift in Sources */,
+				3EEF58C425774025008D5A46 /* DetailViewController.swift in Sources */,
 				3EEF57D025773331008D5A46 /* SceneDelegate.swift in Sources */,
+				3EEF58BD25773BA1008D5A46 /* Flag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
