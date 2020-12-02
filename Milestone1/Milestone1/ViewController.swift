@@ -36,10 +36,12 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
-        cell.textLabel?.text = pictures[indexPath.row]
+        let flagPath = pictures[indexPath.row]
+        let capitalisedFlag = Flag.capitalise(flagPath: flagPath)
+        cell.textLabel?.text = capitalisedFlag
+        
         return cell
     }
-
 
 }
 
