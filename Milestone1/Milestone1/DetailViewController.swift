@@ -18,6 +18,9 @@ class DetailViewController: UIViewController {
         
         navigationItem.largeTitleDisplayMode = .never
         
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
+        
         if let imageToLoadPath = selectedImagePath {
             // The path is currently hardcoded with either 2x or 3x
             // Get lowercase flag so that we can determine resolution during runtime
