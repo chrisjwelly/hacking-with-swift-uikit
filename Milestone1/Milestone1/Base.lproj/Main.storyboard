@@ -46,13 +46,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ireland.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pvx-us-TzM">
-                                <rect key="frame" x="87" y="384" width="240" height="118"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ireland.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pvx-us-TzM">
+                                <rect key="frame" x="0.0" y="344.5" width="414" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pvx-us-TzM" secondAttribute="height" multiplier="2:1" id="LfZ-BH-Xua"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DgV-nJ-VU4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DgV-nJ-VU4" firstAttribute="trailing" secondItem="Pvx-us-TzM" secondAttribute="trailing" id="6d1-ne-iCU"/>
+                            <constraint firstItem="Pvx-us-TzM" firstAttribute="centerX" secondItem="dh9-nP-rel" secondAttribute="centerX" id="Xbp-v7-ldW"/>
+                            <constraint firstItem="Pvx-us-TzM" firstAttribute="leading" secondItem="DgV-nJ-VU4" secondAttribute="leading" id="drN-9j-2Q0"/>
+                            <constraint firstItem="Pvx-us-TzM" firstAttribute="centerY" secondItem="dh9-nP-rel" secondAttribute="centerY" id="u00-pw-s1f"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="Pvx-us-TzM" id="fdF-5i-xsW"/>
