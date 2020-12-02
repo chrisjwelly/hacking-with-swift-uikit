@@ -16,7 +16,10 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let imageToLoad = selectedImagePath {
+        if let imageToLoadPath = selectedImagePath {
+            // The path is currently hardcoded with either 2x or 3x
+            // Get lowercase flag so that we can determine resolution during runtime
+            let imageToLoad = Flag.getLowercaseFlag(flagPath: imageToLoadPath)
             imageView.image = UIImage(named: imageToLoad)
         }
 

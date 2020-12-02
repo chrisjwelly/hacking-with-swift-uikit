@@ -22,10 +22,15 @@ class Flag {
          "us": "US",
          "uk": "UK"]
     
-    static func capitalise(flagPath: String) -> String {
+    static func getLowercaseFlag(flagPath: String) -> String {
         // Assume that filename will have '@'
         let exclusiveIdx = flagPath.firstIndex(of: "@") ?? flagPath.endIndex
         let lowercaseFlag: String = String(flagPath[..<exclusiveIdx])
+        return lowercaseFlag
+    }
+    
+    static func capitalise(flagPath: String) -> String {
+        let lowercaseFlag = getLowercaseFlag(flagPath: flagPath)
         return capitalise(lowercaseFlag: lowercaseFlag)
     }
     
