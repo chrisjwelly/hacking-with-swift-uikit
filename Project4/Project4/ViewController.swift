@@ -50,6 +50,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         for website in websites {
             ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
         }
+        ac.addAction(UIAlertAction(title: "facebook.com", style: .default, handler: openPage))
         ac.addAction(UIAlertAction(title: "cancel", style: .cancel))
         
         ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
@@ -74,8 +75,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        let url = navigationAction.request.url
-        
+        let url: URL? = navigationAction.request.url
         if let host = url?.host {
             for website in websites {
                 if host.contains(website) {
@@ -85,7 +85,20 @@ class ViewController: UIViewController, WKNavigationDelegate {
             }
         }
         
+        if let absString = url?.absoluteString {
+            // Apple website has an about:blank being loaded for some reason...
+            if absString == "about:blank" {
+                decisionHandler(.allow)
+                return
+            }
+        }
+
+        let vc = UIAlertController(title: "Website blocked!", message: "You are not allowed to visit this site!" , preferredStyle: .alert)
+        vc.addAction(UIAlertAction(title: "Close", style: .cancel))
+        present(vc, animated: true)
+        
         decisionHandler(.cancel)
+
     }
 }
 
