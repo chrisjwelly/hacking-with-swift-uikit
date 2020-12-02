@@ -16,10 +16,13 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.largeTitleDisplayMode = .never
+        
         if let imageToLoadPath = selectedImagePath {
             // The path is currently hardcoded with either 2x or 3x
             // Get lowercase flag so that we can determine resolution during runtime
             let imageToLoad = Flag.getLowercaseFlag(flagPath: imageToLoadPath)
+            title = Flag.capitalise(lowercaseFlag: imageToLoad)
             imageView.image = UIImage(named: imageToLoad)
         }
 
