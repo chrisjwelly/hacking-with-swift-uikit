@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         
         imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.lightGray.cgColor
@@ -30,6 +31,26 @@ class DetailViewController: UIViewController {
         }
 
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func shareTapped() {
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+            print("No image found")
+            return
+        }
+        
+        guard let imageToLoadPath = selectedImagePath else {
+            print("No path found")
+            return
+        }
+        
+        let imageDesc = Flag.capitalise(flagPath: imageToLoadPath) + " Flag"
+        let vc = UIActivityViewController(activityItems: [image, imageDesc], applicationActivities: [])
+        
+        // Important for iPad
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        
+        present(vc, animated: true)
     }
     
 
