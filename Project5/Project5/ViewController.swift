@@ -16,6 +16,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "New", style: .plain, target: self, action: #selector(restartGame))
         
         if let startWordsUrl = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startWordsUrl) {
@@ -30,10 +31,18 @@ class ViewController: UITableViewController {
         startGame()
     }
     
-    func startGame() {
+    @objc func startGame(action: UIAlertAction! = nil) {
         title = allWords.randomElement()
         usedWords.removeAll(keepingCapacity: true)
         tableView.reloadData() // great when changing levels
+    }
+    
+    @objc func restartGame() {
+        let ac = UIAlertController(title: "Are you sure?", message: "This will restart your progress", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "New game", style: .default, handler: startGame))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(ac, animated: true)
     }
     
     // MARK: TableView Controller
