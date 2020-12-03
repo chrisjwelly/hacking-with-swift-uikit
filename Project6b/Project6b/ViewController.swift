@@ -68,7 +68,8 @@ class ViewController: UIViewController {
             
             // label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
             
-            label.heightAnchor.constraint(equalToConstant: 88).isActive = true
+            //label.heightAnchor.constraint(equalToConstant: 88).isActive = true
+            label.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: (1/5), constant: -10).isActive = true
             
             if let previous = previous {
                 label.topAnchor.constraint(equalTo: previous.bottomAnchor, constant: 10).isActive = true
