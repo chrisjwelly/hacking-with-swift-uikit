@@ -13,7 +13,7 @@ class ViewController: UITableViewController, WKNavigationDelegate {
     // MARK: Properties
     var webView: WKWebView!
     var progressView: UIProgressView!
-    var websites = ["apple.com", "hackingwithswift.com"]
+    var websites = [String]()
     let HTTPS = "https://"
     
     override func viewDidLoad() {
@@ -21,6 +21,22 @@ class ViewController: UITableViewController, WKNavigationDelegate {
         // Do any additional setup after loading the view.
         webView = WKWebView()
         title = "WebView"
+        
+        if let startWebsitesUrl = Bundle.main.url(forResource: "start", withExtension: "txt") {
+            if let startWebsites = try? String(contentsOf: startWebsitesUrl) {
+                websites = startWebsites.components(separatedBy: "\n")
+                
+                let endIndex = websites.endIndex
+                if websites[endIndex - 1] == "" {
+                    websites.remove(at: endIndex - 1)
+                }
+                
+            }
+        }
+        
+        if websites.isEmpty {
+            websites = ["apple.com", "hackingwithswift.com"]
+        }
     }
     
     // MARK: Webkit support
