@@ -88,12 +88,10 @@ class ViewController: UITableViewController {
             errorTitle = "Word not possible"
             errorMessage = "You can't spell that word from \(title!.lowercased())"
         }
-        
-        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
+        showErrorMessage(errorTitle: errorTitle, errorMessage: errorMessage)
     }
     
+    // MARK: Checks
     func isPossible(word: String) -> Bool {
         guard var tempWord = title?.lowercased() else { return false }
         
@@ -124,6 +122,13 @@ class ViewController: UITableViewController {
         let range = NSRange(location: 0, length: word.utf16.count)
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
         return misspelledRange.location == NSNotFound
+    }
+    
+    // MARK: Error Messages
+    func showErrorMessage(errorTitle: String, errorMessage: String) {
+        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
 }
 
