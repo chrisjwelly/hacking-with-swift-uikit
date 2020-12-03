@@ -109,10 +109,17 @@ class ViewController: UITableViewController {
     }
     
     func isOriginal(word: String) -> Bool {
-        return !usedWords.contains(word)
+        guard let originalWord = title?.lowercased() else { return false }
+        return !(usedWords.contains(word) || word == originalWord)
     }
     
     func isReal(word: String) -> Bool {
+        
+        // Pretend that if the word is less than 3 in length, then it's not real
+        if (word.count < 3) {
+            return false
+        }
+        
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: word.utf16.count)
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
