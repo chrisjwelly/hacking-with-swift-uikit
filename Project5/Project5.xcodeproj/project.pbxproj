@@ -13,6 +13,7 @@
 		3EFFF7FB25788EFA0005BE97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFFF7F925788EFA0005BE97 /* Main.storyboard */; };
 		3EFFF7FD25788EFB0005BE97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EFFF7FC25788EFB0005BE97 /* Assets.xcassets */; };
 		3EFFF80025788EFB0005BE97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EFFF7FE25788EFB0005BE97 /* LaunchScreen.storyboard */; };
+		3EFFF80A2578905B0005BE97 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3EFFF8092578905B0005BE97 /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3EFFF7FC25788EFB0005BE97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EFFF7FF25788EFB0005BE97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3EFFF80125788EFB0005BE97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EFFF8092578905B0005BE97 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = start.txt; path = "../../HackingWithSwift/Classic/project5-files/start.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				3EFFF7FC25788EFB0005BE97 /* Assets.xcassets */,
 				3EFFF7FE25788EFB0005BE97 /* LaunchScreen.storyboard */,
 				3EFFF80125788EFB0005BE97 /* Info.plist */,
+				3EFFF8092578905B0005BE97 /* start.txt */,
 			);
 			path = Project5;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EFFF80025788EFB0005BE97 /* LaunchScreen.storyboard in Resources */,
+				3EFFF80A2578905B0005BE97 /* start.txt in Resources */,
 				3EFFF7FD25788EFB0005BE97 /* Assets.xcassets in Resources */,
 				3EFFF7FB25788EFA0005BE97 /* Main.storyboard in Resources */,
 			);
