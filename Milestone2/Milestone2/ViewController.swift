@@ -17,6 +17,8 @@ class ViewController: UITableViewController {
         title = "Shopping List"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItem))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearShoppingList))
+        
     }
 
     // MARK: TableView Methods
@@ -52,5 +54,19 @@ class ViewController: UITableViewController {
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
 
+    @objc func clearShoppingList() {
+        let ac = UIAlertController(title: "Are you sure?", message: "This will clear your list. It cannot be undone.", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) {
+            [weak self] _ in
+            self?.shoppingList.removeAll()
+            self?.tableView.reloadData()
+        }
+        
+        ac.addAction(confirmAction)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(ac, animated: true)
+    }
 }
 
