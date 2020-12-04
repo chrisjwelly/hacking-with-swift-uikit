@@ -16,8 +16,14 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         title = "Shopping List"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItem))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearShoppingList))
+        // Creating BarButtonItems
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItem))
+        let clearButton = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearShoppingList))
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareShoppingList))
+        
+        // Setting the BarButtonItems
+        navigationItem.rightBarButtonItems = [addButton, shareButton]
+        navigationItem.leftBarButtonItem = clearButton
         
     }
 
@@ -67,6 +73,15 @@ class ViewController: UITableViewController {
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         present(ac, animated: true)
+    }
+    
+    @objc func shareShoppingList() {
+        // TODO: Change the activityItems
+        let vc = UIActivityViewController(activityItems: ["String"], applicationActivities: [])
+        // Hardcoded because the project is still pretty small. Ideally the index is shared
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItems?[1]
+        
+        present(vc, animated: true)
     }
 }
 
