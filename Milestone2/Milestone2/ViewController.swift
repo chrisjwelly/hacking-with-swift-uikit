@@ -56,10 +56,14 @@ class ViewController: UITableViewController {
     }
     
     func submit(_ item: String) {
-        shoppingList.insert(item, at: 0)
-        
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        if item == "" {
+            showErrorMessage(errorTitle: "Item cannot be empty!", errorMessage: "Try typing something!")
+        } else {
+            shoppingList.insert(item, at: 0)
+            
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        }
     }
 
     @objc func clearShoppingList() {
@@ -85,6 +89,15 @@ class ViewController: UITableViewController {
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItems?[1]
         
         present(vc, animated: true)
+    }
+    
+    // MARK: Error Message
+    func showErrorMessage(errorTitle: String, errorMessage: String) {
+        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        
+        ac.addAction(UIAlertAction(title: "Close", style: .cancel))
+        
+        present(ac, animated: true)
     }
 }
 
