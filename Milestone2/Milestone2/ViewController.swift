@@ -76,8 +76,9 @@ class ViewController: UITableViewController {
     }
     
     @objc func shareShoppingList() {
-        // TODO: Change the activityItems
-        let vc = UIActivityViewController(activityItems: ["String"], applicationActivities: [])
+        let joinedShoppingList = shoppingList.joined(separator: "\n")
+        let vc = UIActivityViewController(activityItems: [joinedShoppingList], applicationActivities: [])
+        
         // Hardcoded because the project is still pretty small. Ideally the index is shared
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItems?[1]
         
