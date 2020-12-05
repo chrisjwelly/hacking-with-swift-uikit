@@ -19,6 +19,7 @@ class ViewController: UITableViewController {
         
         let urlString: String
         
+        print("didLoad")
         if navigationController?.tabBarItem.tag == 0 {
             urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
         } else {
@@ -85,10 +86,20 @@ class ViewController: UITableViewController {
     }
     
     func submit(_ filterKeyword: String) {
+        for petition in petitions {
+            let title = petition.title
+            let body = petition.body
+            
+            if (title.contains(filterKeyword) || body.contains(filterKeyword)) {
+                filteredPetitions.append(petition)
+            }
+        }
         
+        filtered = true
+        tableView.reloadData()
     }
-    // MARK: TableView Methods
     
+    // MARK: TableView Methods
     func getCurrPetitions() -> [Petition] {
         if (filtered) {
             return filteredPetitions
