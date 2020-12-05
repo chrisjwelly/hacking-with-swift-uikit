@@ -11,6 +11,8 @@ class ViewController: UITableViewController {
     
     // MARK: Properties
     var petitions = [Petition]()
+    var filteredPetitions = [Petition]()
+    var filtered = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +58,7 @@ class ViewController: UITableViewController {
     // MARK: Navbar methods
     func configureNavBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(showCredits))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(filter))
     }
     
     @objc func showCredits() {
@@ -65,15 +68,45 @@ class ViewController: UITableViewController {
         
         present(ac, animated: true)
     }
-
+    
+    @objc func filter() {
+        let ac = UIAlertController(title: "Enter filter keyword", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .default) {
+            [weak self, weak ac] _ in
+            guard let filterKeyword = ac?.textFields?[0].text else { return }
+            self?.submit(filterKeyword)
+        }
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        ac.addAction(submitAction)
+        present(ac, animated: true)
+    }
+    
+    func submit(_ filterKeyword: String) {
+        
+    }
     // MARK: TableView Methods
+    
+    func getCurrPetitions() -> [Petition] {
+        if (filtered) {
+            return filteredPetitions
+        } else {
+            return petitions
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return petitions.count
+        let currPetitions = getCurrPetitions()
+        return currPetitions.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currPetitions = getCurrPetitions()
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let petition = petitions[indexPath.row]
+        let petition = currPetitions[indexPath.row]
         cell.textLabel?.text = petition.title
         cell.detailTextLabel?.text = petition.body
         
@@ -81,8 +114,9 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currPetitions = getCurrPetitions()
         let vc = DetailViewController()
-        vc.detailItem = petitions[indexPath.row]
+        vc.detailItem = currPetitions[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
     
