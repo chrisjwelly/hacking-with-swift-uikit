@@ -97,6 +97,25 @@ class ViewController: UITableViewController {
         
         filtered = true
         tableView.reloadData()
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear Filter", style: .plain, target: self, action: #selector(clearFilter))
+    }
+    
+    @objc func clearFilter() {
+        let ac = UIAlertController(title: "Are you sure?", message: "This will reset your filters.", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) {
+            [weak self] _ in
+            
+            // Kinda lazy here so I will just reuse the old one
+            self?.configureNavBar()
+
+            self?.filtered = false
+            self?.tableView.reloadData()
+        }
+        ac.addAction(confirmAction)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(ac, animated: true)
     }
     
     // MARK: TableView Methods
