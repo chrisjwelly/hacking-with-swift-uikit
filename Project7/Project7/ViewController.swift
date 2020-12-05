@@ -23,6 +23,8 @@ class ViewController: UITableViewController {
             urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
         }
         
+        configureNavBar()
+        
         if let url = URL(string: urlString) {
             if let data = try? Data(contentsOf: url) {
                 // We're OK to parse
@@ -49,6 +51,19 @@ class ViewController: UITableViewController {
             petitions = jsonPetitions.results
             tableView.reloadData()
         }
+    }
+    
+    // MARK: Navbar methods
+    func configureNavBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(showCredits))
+    }
+    
+    @objc func showCredits() {
+        let ac = UIAlertController(title: "Credits", message: "The information provided here is from the We The People API of the Whitehouse", preferredStyle: .alert)
+        let closeAction = UIAlertAction(title: "Close", style: .default)
+        ac.addAction(closeAction)
+        
+        present(ac, animated: true)
     }
 
     // MARK: TableView Methods
