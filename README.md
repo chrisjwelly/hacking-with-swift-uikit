@@ -21,6 +21,7 @@ The following section will serve as a quick way to navigate around this reposito
 | [Project 5](#project-5) | Game to create anagrams from a given word. |
 | [Project 6](#project-6) | More on Auto Layout, learning Visual Format Language and Anchors. |
 | [Milestone 2](#milestone-2) | Creating Shopping List via user input. |
+| [Project 7](#project-7) | Make an app to parse Whitehouse petitions using JSON and a tab bar. |
 
 ## Project 1
 [Code](Project1)
@@ -117,6 +118,8 @@ Notable aspects:
 
 [Site](https://www.hackingwithswift.com/read/6/)
 
+[PR](https://github.com/chrisjwelly/hacking-with-swift-uikit/pull/5)
+
 Description: More on Auto Layout, learning Visual Format Language and Anchors.
 
 Notable Aspects:
@@ -130,7 +133,7 @@ Existing Issue: [#6](https://github.com/chrisjwelly/hacking-with-swift-uikit/iss
 
 [Site](https://www.hackingwithswift.com/guide/ios-classic/3/3/challenge)
 
-[PR](https://github.com/chrisjwelly/hacking-with-swift-uikit/issues/7)
+[PR](https://github.com/chrisjwelly/hacking-with-swift-uikit/pull/7)
 
 Description: Creating Shopping List via user input.
 
@@ -138,3 +141,19 @@ Notable Aspects:
 * Mostly review of Tabel View and prompting user input as per Project 5
 * Discovering about `rightBarButtonItems` (with the s at the end) array.
 * Reviewed a bit more about closures
+
+## Project 7
+[Code](Project7)
+
+[Site](https://www.hackingwithswift.com/read/7/)
+
+[PR](https://github.com/chrisjwelly/hacking-with-swift-uikit/pull/8)
+
+Description: Make an app to parse Whitehouse petitions using JSON and a tab bar.
+
+Notable Aspects:
+* Download JSON using Swift's Data type
+* Codable protocol to convert data into Swift objects
+* Using UITabBarController. Duplicating View Controllers via code
+* This tutorial puts things in `AppDelegate.swift`, which did not work for me. I had to put some methods in `SceneDelegate.swift`
+* Noticing how `viewDidLoad()` is called for tabs. It seems like it is only called once; when you open the corresponding tab for the first time. Afterwards, when switching tabs, it feels like it is "cached", and you can switch tabs without calling `viewDidLoad()`
