@@ -113,6 +113,7 @@ class ViewController: UITableViewController {
         }
         
         filtered = true
+        title = "Filtering for: " + filterKeyword
         tableView.reloadData()
         
         configureLeftBar(mode: .clearFilter)
@@ -126,6 +127,7 @@ class ViewController: UITableViewController {
             self?.configureLeftBar(mode: .filter)
 
             self?.filtered = false
+            self?.title = nil
             self?.tableView.reloadData()
         }
         ac.addAction(confirmAction)
