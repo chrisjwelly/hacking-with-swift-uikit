@@ -9,6 +9,10 @@ import UIKit
 
 class ViewController: UITableViewController {
     
+    enum LeftBar {
+        case filter, clearFilter
+    }
+    
     // MARK: Properties
     var petitions = [Petition]()
     var filteredPetitions = [Petition]()
@@ -58,8 +62,21 @@ class ViewController: UITableViewController {
     
     // MARK: Navbar methods
     func configureNavBar() {
+        configureRightBar()
+        configureLeftBar(mode: .filter)
+    }
+    
+    func configureRightBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(showCredits))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(filter))
+    }
+    
+    func configureLeftBar(mode: LeftBar) {
+        switch mode {
+        case .filter:
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(filter))
+        case .clearFilter:
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear Filter", style: .plain, target: self, action: #selector(clearFilter))
+        }
     }
     
     @objc func showCredits() {
@@ -98,7 +115,7 @@ class ViewController: UITableViewController {
         filtered = true
         tableView.reloadData()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear Filter", style: .plain, target: self, action: #selector(clearFilter))
+        configureLeftBar(mode: .clearFilter)
     }
     
     @objc func clearFilter() {
@@ -106,8 +123,7 @@ class ViewController: UITableViewController {
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) {
             [weak self] _ in
             
-            // Kinda lazy here so I will just reuse the old one
-            self?.configureNavBar()
+            self?.configureLeftBar(mode: .filter)
 
             self?.filtered = false
             self?.tableView.reloadData()
